@@ -10,15 +10,25 @@
         $_SESSION["diceNum"];
         $_SESSION["roundNum"];
         $_SESSION["roundN"];
+        
 
 
+        $max=$_SESSION["p1Score"];
+
+        for($x=0;$x<3;$x++){
+            if($max<$_SESSION["p2Score"])
+                $max=$_SESSION["p2Score"];
+            else if($max<$_SESSION["p3Score"]){
+                $max=$_SESSION["p3Score"];
+            }
+        }
 ?>
 
 <!DOCTYPE html>
 <html lang="sl">
 	<head>
 		<title>	
-        Crippling gambling addiction
+        Dice Gambling
 		</title>
 		<meta charset="utf-8" >
         <link rel="stylesheet" href="css/Style.css">
@@ -32,24 +42,44 @@
         
         <div id="Header">
                 
-                <strong class="naslov">Crippling gambling addiction</strong>
+                <strong class="naslov">Dice Gambling</strong>
         </div>
         <div id="wrapper">
-            <div class="player">
+            <div class="playerk">
+                <strong><?php if($max==$_SESSION["p1Score"]){echo 'You win!';} ?></strong></br>
                 <strong class="imena"><?php echo $_SESSION["p1"];  ?></strong></br>
                 <strong class="imena"><?php echo $_SESSION["p1Score"];  ?></strong></br>
             </div>
-            <div class="player">
+            <div class="playerk">
+                <strong><?php if($max==$_SESSION["p2Score"]){echo 'You win!';} ?></strong></br>
                 <strong class="imena"><?php echo $_SESSION["p2"];  ?></strong></br>
                 <strong class="imena"><?php echo $_SESSION["p2Score"];  ?></strong></br>
             </div>
-            <div class="player">
+            <div class="playerk">
+                <strong><?php if($max==$_SESSION["p3Score"]){echo 'You win!';} ?></strong></br>
                 <strong class="imena"><?php echo $_SESSION["p3"];  ?></strong></br>
                 <strong class="imena"><?php echo $_SESSION["p3Score"];  ?></strong></br>
             </div>
-            
+            <div id ="redirekt">
+                <strong>You will be redirected in 10 seconds</strong>
+            </div>
             
         </div>
         </form>
+
+
+        <script>
+            function redirTimer(){
+                self.setTimeout("self.location.href='index.php';",10000);
+            }
+
+            redirTimer();
+            var secondsLeft = 10;
+
+            setInterval(function(){
+                document.getElementById("time").innerHTML = --secondsLeft
+            }, 1000);
+
+        </script>
 	</body>
 </html>

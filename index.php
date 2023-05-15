@@ -2,7 +2,7 @@
 <html lang="sl">
 	<head>
 		<title>	
-        Crippling gambling addiction
+        Gambling Dice
 		</title>
 		<meta charset="utf-8" >
         <link rel="stylesheet" href="css/Style.css">
@@ -16,18 +16,18 @@
         
         <div id="Header">
                 
-                <strong class="naslov">Crippling gambling addiction</strong>
+                <strong class="naslov">Gambling Dice</strong>
         </div>
         <div id="wrapper">
-            <div class="player">
+            <div class="playerk">
                 <strong>PLAYER 1</strong></br>
                 <input type="text" name="playerone" id="player1" maxlength="10" required>
             </div>
-            <div class="player">
+            <div class="playerk">
                 <strong>PLAYER 2</strong></br>
                 <input type="text" name="playertwo" id="player2" maxlength="10" required>
             </div>
-            <div class="player">
+            <div class="playerk">
                 <strong>PLAYER 3</strong></br>
                 <input type="text" name="playerthree" id="player3" maxlength="10" required>
             </div>
@@ -45,6 +45,8 @@
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
                 </select>
             </div>
             <div class="num">

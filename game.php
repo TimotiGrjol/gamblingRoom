@@ -14,31 +14,36 @@
         $_SESSION["roundNum"]=$_POST["rNum"];
         $_SESSION["roundN"]=0;
     }
-    
-    
-
-    $_SESSION["roundN"]++;
-        
     $p1Roll=array();
     $p2Roll=array();
     $p3Roll=array();
     
-
-    
-        for ($y = 0; $y <$_SESSION["diceNum"] ; $y++) {
+    for ($y = 0; $y <$_SESSION["diceNum"] ; $y++) {
             array_push($p1Roll,rand(1,6));
             array_push($p2Roll,rand(1,6));
             array_push($p3Roll,rand(1,6));
         }
-        
-        
     
-    echo sizeof($p1Roll);
-    for ($x = 0; $x <sizeof($p1Roll) ; $x++) {
+    
+    if($_SESSION["roundN"]<$_SESSION["roundNum"]){
+        $_SESSION["roundN"]++;
+        for ($x = 0; $x <sizeof($p1Roll) ; $x++) {
         $_SESSION["p1Score"]+=$p1Roll[$x];
         $_SESSION["p2Score"]+=$p2Roll[$x];
         $_SESSION["p3Score"]+=$p3Roll[$x];
+        }
     }
+        
+    
+    
+
+    
+        
+        
+        
+    
+    
+    
 
 ?>
 
@@ -47,7 +52,7 @@
 <html lang="sl">
 	<head>
 		<title>	
-        Crippling gambling addiction
+        Gambling Dice
 		</title>
 		<meta charset="utf-8" >
         <link rel="stylesheet" href="css/Style.css">
@@ -59,7 +64,7 @@
 	<body onload="generate()">
         <form name="Obrazec" id="Obrazec" method="post" autocomplete="off" action="<?php if($_SESSION["roundN"]==$_SESSION["roundNum"]){echo 'konc.php';}else{echo 'game.php';}?>">
         <div id="Header">
-                <strong class="naslov">Crippling gambling addiction</strong>
+                <strong class="naslov">Dice Throw</strong>
         </div>
         <div id="wrapper">
             <div class="player">
@@ -90,9 +95,13 @@
                 <div class="numero"><?php echo $_SESSION["p3Score"];  ?></div>
             </div>
             <div id="buuton" >
-                <input type="submit" id="gumb" value="tleje">
-            
+                <input type="submit" id="gumb" value="<?php if($_SESSION["roundN"]==$_SESSION["roundNum"]){echo 'Results';}else {echo 'Roll';}  ?>">
+            </div>
+            <div id="runda">
+                    Round: <?php echo $_SESSION["roundN"]  ?>
+            </div>
         </div>
+
         </form>
 	</body>
 </html>
