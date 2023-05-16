@@ -37,7 +37,7 @@
         
 
 	</head>
-	<body onload="generate()">
+	<body onload="redirTimer()">
 		<form name="Obrazec" id="Obrazec" method="post" autocomplete="off" action="game.php">
         
         <div id="Header">
@@ -61,7 +61,7 @@
                 <strong class="imena"><?php echo $_SESSION["p3Score"];  ?></strong></br>
             </div>
             <div id ="redirekt">
-                <strong>You will be redirected in 10 seconds</strong>
+                <strong>You will be redirected in <span id="time">10</span> seconds</strong>
             </div>
             
         </div>
@@ -69,17 +69,17 @@
 
 
         <script>
+        var secondsLeft = 10;
             function redirTimer(){
-                self.setTimeout("self.location.href='index.php';",10000);
-            }
-
-            redirTimer();
-            var secondsLeft = 10;
-
             setInterval(function(){
-                document.getElementById("time").innerHTML = --secondsLeft
+                if(secondsLeft==0){
+                location.href="index.php";
+            }
+            else{
+                document.getElementById("time").innerHTML = --secondsLeft; }
             }, 1000);
-
+            
+        }
         </script>
 	</body>
 </html>
